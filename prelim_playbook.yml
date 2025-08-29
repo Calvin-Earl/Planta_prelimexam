@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update repo
+    apt:
+      update_cache: true
+
+  - name: install python3 package
+    apt:
+      name: python3
+      state: latest
+
+  - name: install pip3 package
+    apt:
+      name: pip
+      state: latest
+
+  - name: install java open jdk package
+    apt:
+      name: openjdk-8-jre
+
+  - name: install mariadb package
+    apt:
+      name: mariadb-server
+
+  - name: set MOTD
+    copy:
+      dest: /etc/motd
+      content: Ansible node managed by
